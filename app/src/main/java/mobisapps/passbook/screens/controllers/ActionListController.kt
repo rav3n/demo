@@ -6,15 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
+import butterknife.OnClick
 import com.bluelinelabs.conductor.RouterTransaction
 import com.butlerhero.app.kotlin.core.RxController
-import com.hannesdorfmann.mosby3.mvp.MvpView
 import mobisapps.passbook.R
 import mobisapps.passbook.entities.CategoryEntity
 import mobisapps.passbook.widgets.SlidingTabLayout
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.support.RouterPagerAdapter
 import mobisapps.passbook.screens.presenters.ActionListPresenter
+import mobisapps.passbook.screens.views.ActionListView
 
 class ActionListController : RxController<ActionListView, ActionListPresenter>, ActionListView {
 
@@ -29,10 +30,6 @@ class ActionListController : RxController<ActionListView, ActionListPresenter>, 
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup): View {
         return inflater.inflate(R.layout.controller_action_list, container, false)
-    }
-
-    override fun onBindView(view: View) {
-        super.onBindView(view)
     }
 
     override fun createPresenter(): ActionListPresenter {
@@ -66,8 +63,9 @@ class ActionListController : RxController<ActionListView, ActionListPresenter>, 
         sliding.setViewPager(pager)
 
     }
-}
 
-interface ActionListView : MvpView {
-    fun showCategory(category: List<CategoryEntity>)
+    @OnClick(R.id.controller_action_list_map_button)
+    fun onMapButtonClicked() {
+        router.pushController(MapController.routerTransaction())
+    }
 }

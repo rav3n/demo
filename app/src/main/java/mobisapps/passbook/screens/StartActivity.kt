@@ -30,6 +30,7 @@ class StartActivity : AppCompatActivity() {
                 .doOnTerminate { progressBarVisibility(false) }
                 .subscribe(
                     {
+                        finish()
                         ActionListActivity.start(applicationContext)
                     },
                     {

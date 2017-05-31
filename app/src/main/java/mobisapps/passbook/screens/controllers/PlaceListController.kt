@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import butterknife.BindView
 import com.amurnet.coupon.v2.controllers.ButterKnifeController
 import com.bluelinelabs.conductor.RouterTransaction
-import com.hannesdorfmann.mosby3.mvp.MvpView
 import mobisapps.passbook.R
 import mobisapps.passbook.entities.PlaceEntity
 import mobisapps.passbook.screens.adapters.PlaceListAdapter
 import mobisapps.passbook.screens.presenters.PlaceListPresenter
+import mobisapps.passbook.screens.views.PlaceListView
 
-class PlaceListController : ButterKnifeController<PlaceListView, PlaceListPresenter>, PlaceListView {
+class PlaceListController : ButterKnifeController<PlaceListView, PlaceListPresenter>, PlaceListView, PlaceListAdapter.PlaceListListener {
 
     private var id: Int = 0
 
@@ -37,7 +37,11 @@ class PlaceListController : ButterKnifeController<PlaceListView, PlaceListPresen
 
     override fun showList(items: List<PlaceEntity>) {
         recycler.layoutManager = LinearLayoutManager(activity)
-        recycler.adapter = PlaceListAdapter(items)
+        recycler.adapter = PlaceListAdapter(items, this)
+    }
+
+    override fun onItemClicked(place: PlaceEntity) {
+        router.pushController(PlaceCartController.routerTransaction(place.id))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -55,8 +59,4 @@ class PlaceListController : ButterKnifeController<PlaceListView, PlaceListPresen
             return RouterTransaction.with(PlaceListController(id))
         }
     }
-}
-
-interface PlaceListView : MvpView {
-    fun showList(items: List<PlaceEntity>)
 }

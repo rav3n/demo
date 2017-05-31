@@ -2,6 +2,7 @@ package mobisapps.passbook.screens
 
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class ActionListActivity : AppCompatActivity() {
     companion object {
         fun start(context: Context) {
             val intent = Intent(context, ActionListActivity::class.java)
+            intent.flags = FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
     }

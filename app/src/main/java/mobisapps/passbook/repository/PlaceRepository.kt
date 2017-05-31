@@ -8,4 +8,8 @@ class PlaceRepository(default: List<PlaceEntity> = listOf()) : BehaviorSubjectRe
     fun placesByIds(places: List<Int>): Observable<List<PlaceEntity>> {
         return toObservable().map { it.filter { places.contains(it.id) } }
     }
+
+    fun placesById(id: Int): Observable<PlaceEntity> {
+        return toObservable().map { it.filter { it.id == id }.first() }
+    }
 }

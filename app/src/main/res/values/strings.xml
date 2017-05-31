@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Passbook</string>
     <string name="data_loading">Data loading...</string>
+    <!--<string name="google_maps_key">AIzaSyDulysZJv-yk5X325z_iLx20LulWjMgRhE</string>-->
+    <string name="google_maps_key">AIzaSyBkPONXymMSG3_16B1370B3liGIy0Ju5Ek</string>
 </resources>

@@ -3,8 +3,8 @@ package mobisapps.passbook.screens.presenters
 import mobisapps.passbook.PassbookApplication
 import mobisapps.passbook.repository.CategoryRepository
 import mobisapps.passbook.repository.PlaceRepository
-import mobisapps.passbook.screens.controllers.PlaceListView
 import mobisapps.passbook.screens.presenters.base.RxBasePresenter
+import mobisapps.passbook.screens.views.PlaceListView
 import javax.inject.Inject
 
 class PlaceListPresenter(private val categoryId: Int) : RxBasePresenter<PlaceListView>() {

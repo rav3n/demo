@@ -2,8 +2,8 @@ package mobisapps.passbook.screens.presenters
 
 import mobisapps.passbook.PassbookApplication
 import mobisapps.passbook.repository.CategoryRepository
-import mobisapps.passbook.screens.controllers.ActionListView
 import mobisapps.passbook.screens.presenters.base.RxBasePresenter
+import mobisapps.passbook.screens.views.ActionListView
 import javax.inject.Inject
 
 class ActionListPresenter : RxBasePresenter<ActionListView>() {
